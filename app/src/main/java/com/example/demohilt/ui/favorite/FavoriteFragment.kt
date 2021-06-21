@@ -22,8 +22,9 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
         val adapter = FavoriteAdapter()
 
-        viewModel.movies.observe(viewLifecycleOwner) {
-            adapter.setMovieList(it)
+        @Suppress("COMPATIBILITY_WARNING")
+        viewModel.movies.observe(viewLifecycleOwner) { movieList ->
+            adapter.setMovieList(movieList)
             binding.apply {
                 rvMovie.setHasFixedSize(true)
                 rvMovie.adapter = adapter

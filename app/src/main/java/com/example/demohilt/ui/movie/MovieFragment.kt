@@ -41,8 +41,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnItemClic
             }
         }
 
-        viewModel.movies.observe(viewLifecycleOwner) {
-            adapter.submitData(viewLifecycleOwner.lifecycle, it)
+        @Suppress("COMPATIBILITY_WARNING")
+        viewModel.movies.observe(viewLifecycleOwner) { movieData ->
+            adapter.submitData(viewLifecycleOwner.lifecycle, movieData)
         }
 
         adapter.addLoadStateListener { loadState ->
